@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Nicole Backal — filmmaker, writer, and video editor. Short films, documentary, editing, writing, and photography.">
+<meta name="color-scheme" content="light dark">
+<title>Nicole Backal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Archivo:wght@400;500;600&display=swap">
+<style>
+/* Layout: single editorial column, left-aligned throughout. Masthead sets the
+   name large; each body of work is a rule-separated typographic list; photography
+   sits lower as a restrained grid. Nothing centered, no cards. */
+:root{
+  --bg:#FAF9F7;
+  --surface:#F1EFEA;
+  --fg:#16140F;
+  --muted:#6E675A;
+  --rule:#DCD7CD;
+  --accent:#35485C;
+  --font-display:'Newsreader',Georgia,'Times New Roman',serif;
+  --font-util:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --measure:36rem;
+  --container:58rem;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121110;
+    --surface:#1B1A17;
+    --fg:#EFEBE3;
+    --muted:#9A9284;
+    --rule:#2F2C27;
+    --accent:#9FBAD2;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121110;
+  --surface:#1B1A17;
+  --fg:#EFEBE3;
+  --muted:#9A9284;
+  --rule:#2F2C27;
+  --accent:#9FBAD2;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font-display);
+  font-size:1.0625rem;
+  line-height:1.6;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:var(--container);
+  margin:0 auto;
+  padding-inline:clamp(1rem,5vw,3.5rem);
+  padding-block:clamp(3rem,9vw,6.5rem) 4rem;
+}
+a{color:inherit}
+
+/* ---------- masthead ---------- */
+.name{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2.6rem,9.5vw,5.25rem);
+  line-height:0.98;
+  letter-spacing:-0.025em;
+  margin:0;
+  text-wrap:balance;
+}
+.tagline{
+  font-family:var(--font-util);
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:1.1rem 0 0;
+}
+nav{
+  margin-top:2.25rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0 1.5rem;
+  font-family:var(--font-util);
+  font-size:0.74rem;
+  font-weight:500;
+  letter-spacing:0.13em;
+  text-transform:uppercase;
+}
+nav a{color:var(--muted);text-decoration:none;padding-block:0.2rem;transition:color .15s}
+nav a:hover,nav a:focus-visible{color:var(--fg)}
+
+.intro{
+  max-width:var(--measure);
+  margin:2.75rem 0 0;
+  font-size:1.1875rem;
+  line-height:1.65;
+  font-weight:300;
+}
+.intro em{font-style:italic}
+.intro + .intro{margin-top:1.1rem}
+
+/* ---------- sections ---------- */
+section{margin-top:clamp(3.25rem,7vw,5rem)}
+.label{
+  font-family:var(--font-util);
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:0.17em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 1.5rem;
+  padding-bottom:0.75rem;
+  border-bottom:1px solid var(--rule);
+}
+.label .count{font-weight:400;letter-spacing:0.1em;opacity:.65;float:right}
+
+/* ---------- work list ---------- */
+.list{list-style:none;margin:0;padding:0}
+.list li{border-bottom:1px solid var(--rule)}
+.row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:0.35rem 1.5rem;
+  padding-block:1.05rem;
+  text-decoration:none;
+  transition:color .15s;
+}
+.row:hover .t,.row:focus-visible .t{color:var(--accent)}
+.row:hover .arrow,.row:focus-visible .arrow{opacity:1;transform:translateX(2px)}
+.t{
+  font-size:1.3125rem;
+  font-weight:400;
+  line-height:1.25;
+  min-width:0;
+  flex:1 1 16rem;
+  letter-spacing:-0.01em;
+  transition:color .15s;
+}
+.t .arrow{
+  font-family:var(--font-util);
+  font-size:0.8em;
+  opacity:0;
+  display:inline-block;
+  margin-left:0.4rem;
+  transition:opacity .15s,transform .15s;
+  color:var(--accent);
+}
+.meta{
+  font-family:var(--font-util);
+  font-size:0.76rem;
+  font-weight:400;
+  letter-spacing:0.07em;
+  color:var(--muted);
+  text-transform:uppercase;
+  flex:0 0 auto;
+  font-variant-numeric:tabular-nums;
+}
+.meta .role{color:var(--fg);opacity:.75}
+.note{
+  font-family:var(--font-util);
+  font-size:0.8rem;
+  color:var(--muted);
+  margin:1.1rem 0 0;
+  max-width:var(--measure);
+  line-height:1.55;
+}
+
+/* ---------- photography ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,8.5rem),1fr));
+  gap:0.7rem 0.75rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+  max-width:33rem; /* holds exactly 3 columns at 8.5rem min + 0.75rem gap -> 6 photos = 2 full rows */
+}
+.photo{margin:0}
+.photo figure{margin:0}
+.frame{
+  position:relative;
+  aspect-ratio:4/5;
+  max-width:100%;
+  background:var(--surface);
+  overflow:hidden;
+}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .ph{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-util);
+  font-size:0.68rem;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border:1px solid var(--rule);
+}
+.photo.empty .frame img{display:none}
+.photo.empty .frame .ph{display:flex}
+figcaption{
+  font-family:var(--font-util);
+  font-size:0.72rem;
+  letter-spacing:0.05em;
+  color:var(--muted);
+  margin-top:0.5rem;
+  line-height:1.45;
+}
+
+/* ---------- contact ---------- */
+.contact{
+  margin-top:clamp(3.25rem,7vw,5rem);
+  padding-top:1.75rem;
+  border-top:1px solid var(--rule);
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.75rem 3rem;
+  align-items:flex-start;
+}
+.contact dl{margin:0}
+.contact dt{
+  font-family:var(--font-util);
+  font-size:0.68rem;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:0.3rem;
+}
+.contact dd{margin:0;font-size:1.0625rem}
+.contact dd a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .15s,color .15s}
+.contact dd a:hover,.contact dd a:focus-visible{color:var(--accent);border-color:var(--accent)}
+.colophon{
+  font-family:var(--font-util);
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:3.5rem 0 0;
+}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1 class="name">Nicole&nbsp;Backal</h1>
+    <p class="tagline">Filmmaker &nbsp;·&nbsp; Writer &nbsp;·&nbsp; Video Editor</p>
+    <nav aria-label="Sections">
+      <a href="#film">Film &amp; Video</a>
+      <a href="#editing">Editing</a>
+      <a href="#writing">Writing</a>
+      <a href="#photography">Photography</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <p class="intro">I make short films and documentaries, cut long-form video, and write about
+    both. I'm finishing a B.A. in Film &amp; Media Studies at Washington University in St. Louis,
+    with minors in Writing and the Business of the Arts.</p>
+
+    <p class="intro">I'm president of WUTV, the university's student television station, and I
+    teach a discussion section of Introduction to Film Studies. I work in English and Spanish, and
+    I graduate in May 2027.</p>
+  </header>
+
+  <!-- =========================================================
+       FILM & VIDEO — your own directed / produced work.
+       To add a project: copy one <li> block and edit the three
+       pieces — the href, the title text, and the two .meta spans.
+       ========================================================= -->
+  <section id="film">
+    <p class="label">Film &amp; Video <span class="count">04</span></p>
+    <ul class="list">
+
+      <li><a class="row" href="https://youtu.be/A4Iym6ss5zw" target="_blank" rel="noopener">
+        <span class="t">Why We Do It<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Director</span> · Short Documentary</span>
+      </a></li>
+
+      <li><a class="row" href="https://youtu.be/QKMFPvtFBuk" target="_blank" rel="noopener">
+        <span class="t">Staring Contest<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Director</span> · Short Film</span>
+      </a></li>
+
+      <li><a class="row" href="https://youtu.be/pjeTuStKONM" target="_blank" rel="noopener">
+        <span class="t">Survival Story<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Producer</span> · Podcast · Coursework</span>
+      </a></li>
+
+      <li><a class="row" href="https://www.youtube.com/@nicoleb1105" target="_blank" rel="noopener">
+        <span class="t">Full channel<span class="arrow">&#8599;</span></span>
+        <span class="meta">YouTube</span>
+      </a></li>
+
+    </ul>
+    <!-- TO DO: the roles above ("Director", "Producer") are guesses - correct any that
+         are wrong. Then add a runtime to each .meta line, e.g.
+         <span class="role">Director</span> · Short Film · 8 min
+         People decide whether to click based on length. -->
+  </section>
+
+  <!-- =========================================================
+       EDITING — work you cut for other people.
+       The YouTube timestamps (&t=36s, &t=157s) have been removed
+       so these open from the beginning.
+       ========================================================= -->
+  <section id="editing">
+    <p class="label">Editing <span class="count">04</span></p>
+    <ul class="list">
+
+      <li><a class="row" href="https://www.youtube.com/watch?v=D5_LTjhzItk" target="_blank" rel="noopener">
+        <span class="t">Anthony Gross &mdash; Hot Ones<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Editor</span> · Interview</span>
+      </a></li>
+
+      <li><a class="row" href="https://www.youtube.com/watch?v=0GWCQ-O_7d0" target="_blank" rel="noopener">
+        <span class="t">Tiny Desk Concert &mdash; Elma Ademovic &amp; Manuel Lopez<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Editor</span> · Live Performance</span>
+      </a></li>
+
+      <li><a class="row" href="https://www.youtube.com/watch?v=5f7ureuRrd8" target="_blank" rel="noopener">
+        <span class="t">Tiny Desk Concert &mdash; Zoe Novak<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Editor</span> · Live Performance</span>
+      </a></li>
+
+      <li><a class="row" href="https://www.youtube.com/watch?v=_kkuZdSRkew" target="_blank" rel="noopener">
+        <span class="t">Tiny Desk Concert &mdash; Ian Scholes<span class="arrow">&#8599;</span></span>
+        <span class="meta"><span class="role">Editor</span> · Live Performance</span>
+      </a></li>
+
+    </ul>
+  </section>
+
+  <!-- =========================================================
+       WRITING — replace the search URL below with a direct link
+       to one specific article you want read first.
+       ========================================================= -->
+  <section id="writing">
+    <p class="label">Writing <span class="count">01</span></p>
+    <ul class="list">
+      <li><a class="row" href="https://www.studlife.com/search?q=nicole+backal" target="_blank" rel="noopener">
+        <span class="t">Student Life &mdash; published clips<span class="arrow">&#8599;</span></span>
+        <span class="meta">Washington University</span>
+      </a></li>
+    </ul>
+    <!-- TO DO: the href above is a Student Life SEARCH page. Replace it with a direct
+         link to your strongest single article, retitle this row to that article's
+         headline, then copy the <li> block to list the others beneath it. -->
+  </section>
+
+  <!-- =========================================================
+       PHOTOGRAPHY
+       Drop your files into the images/ folder next to this file,
+       named photo-01.jpg through photo-06.jpg. Any tile whose
+       file is missing shows a placeholder instead of a broken
+       image. Edit each <figcaption> to describe the photo.
+       Add more by copying one <li class="photo"> block.
+       ========================================================= -->
+  <section id="photography">
+    <p class="label">Photography <span class="count">06</span></p>
+    <ul class="grid">
+
+      <li class="photo"><figure>
+        <div class="frame"><img src="images/photo-01.jpg" alt=""><span class="ph">photo-01.jpg</span></div>
+        <figcaption>Caption &mdash; place, year</figcaption>
+      </figure></li>
+
+      <li class="photo"><figure>
+        <div class="frame"><img src="images/photo-02.jpg" alt=""><span class="ph">photo-02.jpg</span></div>
+        <figcaption>Caption &mdash; place, year</figcaption>
+      </figure></li>
+
+      <li class="photo"><figure>
+        <div class="frame"><img src="images/photo-03.jpg" alt=""><span class="ph">photo-03.jpg</span></div>
+        <figcaption>Caption &mdash; place, year</figcaption>
+      </figure></li>
+
+      <li class="photo"><figure>
+        <div class="frame"><img src="images/photo-04.jpg" alt=""><span class="ph">photo-04.jpg</span></div>
+        <figcaption>Caption &mdash; place, year</figcaption>
+      </figure></li>
+
+      <li class="photo"><figure>
+        <div class="frame"><img src="images/photo-05.jpg" alt=""><span class="ph">photo-05.jpg</span></div>
+        <figcaption>Caption &mdash; place, year</figcaption>
+      </figure></li>
+
+      <li class="photo"><figure>
+        <div class="frame"><img src="images/photo-06.jpg" alt=""><span class="ph">photo-06.jpg</span></div>
+        <figcaption>Caption &mdash; place, year</figcaption>
+      </figure></li>
+
+    </ul>
+  </section>
+
+  <!-- =========================================================
+       CONTACT — your phone number is deliberately not here.
+       Add a LinkedIn URL in place of the placeholder below.
+       ========================================================= -->
+  <section class="contact" id="contact">
+    <dl>
+      <dt>Email</dt>
+      <dd><a href="mailto:nicolebackals@gmail.com">nicolebackals@gmail.com</a></dd>
+    </dl>
+    <dl>
+      <dt>Based in</dt>
+      <dd>St. Louis, Missouri</dd>
+    </dl>
+    <dl>
+      <dt>Available</dt>
+      <dd>Summer 2027</dd>
+    </dl>
+  </section>
+
+  <p class="colophon">Nicole Backal &nbsp;·&nbsp; St. Louis</p>
+
+</div>
+
+<script>
+/* Any photography tile whose image file is missing falls back to a designed
+   placeholder, so the page never shows a broken image. */
+document.querySelectorAll('.photo img').forEach(function(img){
+  function mark(){ img.closest('.photo').classList.add('empty'); }
+  img.addEventListener('error', mark);
+  if (img.complete && img.naturalWidth === 0) mark();
+});
+</script>
+</body>
+</html>
